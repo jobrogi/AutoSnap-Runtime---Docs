@@ -9,12 +9,12 @@ AutoSnap – Runtime brings powerful, grid-based snapping and transform controls
 
 ## 📦 Features
 
-- Grid-snapped actor movement in world space
-- Runtime gizmo with axis & plane-based dragging (X/Y/Z, XY/XZ/YZ)
-- Dynamic grid that follows actors
-- Adjustable snap size
-- Tag-based actor selection system
-- Clean Blueprint integration (no C++ required)
+- Grid-snapped actor movement in world space  
+- Runtime gizmo with axis & plane-based dragging (X/Y/Z, XY/XZ/YZ)  
+- Dynamic grid that follows actors  
+- Adjustable snap size  
+- Tag-based actor selection system  
+- Clean Blueprint integration (no C++ required)  
 - Designed for runtime UGC or in-game building
 
 ---
@@ -22,9 +22,11 @@ AutoSnap – Runtime brings powerful, grid-based snapping and transform controls
 ## 🚀 Getting Started
 
 ### 1. Enable the Plugin
+
 In the UE editor, go to **Edit > Plugins**, search for `AutoSnap - Runtime`, and enable it. Restart the editor if required.
 
 ### 2. Add the Component
+
 In your player character or controller Blueprint, add the `AutoSnapControllerComponent`.
 
 The component will automatically:
@@ -34,12 +36,22 @@ The component will automatically:
 
 ### 3. Assign Required Fields
 
-In the component's Details panel:
-NOTE* Most settings are automatically assigned with default plugin assets but can be changed via the developer. 
-- **Grid Visualizer Class**: Assign `BP_GridVisualizer`
-- **Input Mapping**: Assign `IMC_AutoSnap` 
-- **Select Action**: Assign `IA_LeftClick`
+In the component's Details panel:  
+*(Note: Most fields are auto-filled during runtime using plugin defaults)*
+
+- **Grid Visualizer Class**: Assign `BP_GridVisualizer`  
+- **Runtime Gizmo Class**: Assign `BP_Gizmo`  
+- **Input Mapping**: Assign `IMC_AutoSnap`  
+- **Select Action**: Assign `IA_LeftClick`  
 - (Optional) Enable **Require Actor Tag for Selection** and set the tag to `"SnapSelectable"`
+
+---
+
+### 🔄 Default vs. Custom Asset Behavior
+
+If you want to use your own **Input Mapping Context**, **Input Action**, **Grid Visualizer**, or **Gizmo Class**, simply assign them in the Details panel.
+
+If you **leave any of these empty**, the plugin will automatically use its built-in defaults during `BeginPlay`.
 
 ---
 
@@ -54,6 +66,7 @@ If you don't set this up, the plugin will still work perfectly — just without 
 ### 🔧 Why Use It?
 
 This line from the code enables on-hover visual effects:
+
 ```cpp
 bool bHit = GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Gizmo, Params);
 ```
@@ -65,20 +78,25 @@ If you haven't defined `ECC_Gizmo` in your project, this line will fall back to 
 ### 📝 How to Set It Up in Unreal Engine
 
 #### Go to Project Settings:
+
 - Open your project
 - Navigate to **Edit > Project Settings**
 
-#### Search for Engine->Collision:
+#### Search for Engine → Collision:
+
 - In the left panel, search for **"Collision"**
-- Click on **Collision > Trace Channels**
+- Click on **Engine > Collision > Trace Channels**
 
 #### Add a New Trace Channel:
+
 - Click **New Trace Channel**
 - Name it: `Gizmo`
 - Set the default response to: `Block`
 
 #### Apply the Trace Channel to Gizmo Meshes (Optional):
+
 If you're editing the gizmo Blueprint or mesh component:
+
 - Set **Collision Presets** to `Custom`
 - Under **Trace Responses**, set `Gizmo` to `Block`
 - All other responses can stay as `Ignore`
