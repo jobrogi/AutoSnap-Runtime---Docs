@@ -1,6 +1,6 @@
 # AutoSnap – Runtime
 
-DISCORD SUPPORT LINK: https://discord.gg/YvME6jG8
+[DISCORD SUPPORT LINK HERE](https://discord.gg/YvME6jG8)
 
 AutoSnap – Runtime brings powerful, grid-based snapping and transform controls to runtime actors in your Unreal Engine project. Designed for user-generated content workflows, in-game editors, or simulation-style building systems, this plugin gives developers precise, hotkey-controlled actor manipulation and snapping without needing the editor.
 
